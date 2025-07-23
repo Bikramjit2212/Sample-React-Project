@@ -3,8 +3,12 @@ pipeline{
     stages {
         stage('Build'){
             agent{
-                image 'node:18-alpine'
-                reusable true //reuse the node for the next stage
+                docker{
+                    image 'node:22.11.0-alpine3.20'
+                    args '-u root'
+                    reuseNode true //reuse the node for the next stage
+                    
+                }
             }
         }
 
