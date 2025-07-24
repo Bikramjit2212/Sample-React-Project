@@ -1,5 +1,17 @@
 pipeline{
     agent any
+    options {
+        skipDefaultCheckout(true) // Skip the default checkout step
+    }
+    stages{
+
+        stage('Clean up code') {
+            steps {
+                    cleanWs()
+            }
+        }
+    }
+
     stages {
         stage('Build') {
             agent {
