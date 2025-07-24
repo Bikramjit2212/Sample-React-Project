@@ -10,9 +10,13 @@ pipeline{
                     cleanWs()
             }
         }
-    }
 
-    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Build') {
             agent {
                 docker { 
@@ -21,14 +25,10 @@ pipeline{
                     reuseNode true //reuse the node for the next stage
                     
                 }
-            }
-        
+            }         
 
-            steps {
-                step('clean up workspace') {
-                    cleanWs()
-                }
-                step('Build project'){
+            steps {                
+                
                     sh '''
                         ls -l
                         node --version
@@ -36,9 +36,7 @@ pipeline{
                         npm install
                         npm run build
                         ls -l
-                    '''
-                }
-                
+                    '''               
                 
             }
         }
