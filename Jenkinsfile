@@ -4,7 +4,7 @@ pipeline{
     //this denotes that this pipeline will only run on test environment
     environment {
         NODE_ENV = 'test'
-        VERCEL_TOKEN = credentials('vercel-token')
+        VERCEL_TOKEN = credentials('VERCEL_TOKEN') // Use the credentials plugin to securely access the Vercel token
     }
     options {
         skipDefaultCheckout(true) // Skip the default checkout step
