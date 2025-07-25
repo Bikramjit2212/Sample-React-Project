@@ -4,7 +4,7 @@ pipeline{
     //this denotes that this pipeline will only run on test environment
     environment {
         NODE_ENV = 'test'
-        VERCEL_TOKEN = credentials('VERCEL-TOKEN')
+        VERCEL_TOKEN = credentials('vercel-token')
     }
     options {
         skipDefaultCheckout(true) // Skip the default checkout step
